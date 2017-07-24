@@ -14,13 +14,32 @@ export default function topUsersObservableFactory(
     .merge(
       Observable.fromEvent(refreshButton, 'click')
         .do(() => topUsersApi.resetCurrentPage())
-        .concatMap(click => Observable.of(null, click)),
+
+        // Using concatMap we create a stream
+        // where before every clickEvent item, null item will be emitted
+        // For example:
+        //   --refreshClickEvent---refreshClickEvent---refreshClickEvent->
+        // will become
+        //   --null-refreshClickEvent---null-refreshClickEvent---null-refreshClickEvent->
+        .concatMap(clickEvent => Observable.of(null, clickEvent)),
     )
-    .mergeMap((click) => {
-      if (click !== null) {
+    .mergeMap((clickEvent) => {
+      if (clickEvent !== null) {
+        // This will be an observable which emits a single item - an array of users
         return Observable.fromPromise(topUsersApi.fetchMoreUsers());
       }
+
+      // This will be an observable which emits a single item - an array of null
       return Observable.of([null]);
     })
+
+    // If no users returned then we want to complete the Observable
+    .takeWhile(listOfUsers => listOfUsers.length !== 0)
+
+    // Now we need to concat all array emitted at the previous step
+    // For example:
+    //   --[u1, u2, u3]--[u4, u5]----[null]---[u6, u7, u8, u9]-->
+    // will become
+    //   --u1-u2-u3--u4-u5----null---u6-u7-u8-u9-->
     .concatAll();
 }

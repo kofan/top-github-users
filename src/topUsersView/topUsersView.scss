@@ -22,6 +22,12 @@ h1 {
   border-radius: $border-radius $border-radius 0px 0px;
 }
 
+h2 {
+  margin-top: 50px;
+  font-size: 20px;
+  font-style: italic;
+}
+
 #fetch-users, #refresh-users {
   @include border-dark;
 
@@ -38,12 +44,20 @@ h1 {
 #fetch-users {
   background-image: url("../images/more.png");
   border-bottom-left-radius: $border-radius;
+
+  &[disabled] {
+    opacity: 0.4;
+  }
 }
 
 #refresh-users {
   background-image: url("../images/refresh.png");
   border-left-width: 0px;
   border-bottom-right-radius: $border-radius;
+
+  &[disabled] {
+    opacity: 0.4;
+  }
 }
 
 #top-users-list {
@@ -69,6 +83,7 @@ h1 {
 
     &-login {
       font-weight: bold;
+      text-decoration: underline;
     }
 
     &-followers {

@@ -1,14 +1,23 @@
 import topUsersObservableFactory from './topUsersData/topUsersObservableFactory';
-import { renderUser, fetchButton, refreshButton } from './topUsersView/topUsersView';
+
+import {
+  renderUser,
+  disableActions,
+  fetchButton,
+  refreshButton,
+} from './topUsersView/topUsersView';
 
 /**
  * Start listening for coming users
  */
 topUsersObservableFactory(fetchButton, refreshButton).subscribe(
-  (user) => {
+  /* onNext: */ (user) => {
     renderUser(user);
   },
-  (error) => {
+  /* onNext: */(error) => {
     console.error(error); // eslint-disable-line no-console
+  },
+  /* onComplete: */() => {
+    disableActions();
   },
 );
