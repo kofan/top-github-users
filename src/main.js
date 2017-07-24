@@ -1,4 +1,4 @@
-import topUsersObservableFactory from './topUsersObservableFactory';
+import topUsersObservableFactory from './topUsersData/topUsersObservableFactory';
 import { renderUser, fetchButton, refreshButton } from './topUsersView/topUsersView';
 
 /**
