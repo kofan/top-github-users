@@ -43,9 +43,33 @@ const config = {
         ],
       },
       {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'url-loader', // works like the file-loader, but can return a DataURL if the file is smaller than a byte limit
+            options: {
+              limit: 5120,
+              name: '/images/[name]-[hash:6].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader', // optimize image
+            options: {
+              bypassOnDebug: true,
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 7,
+              },
+            }
+          },
+        ],
+      },
+      {
         test: /\.handlebars$/,
         loader: 'handlebars-loader',
-      }
+      },
     ]
   },
   devtool: 'eval-source-map',

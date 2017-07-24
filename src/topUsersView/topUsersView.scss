@@ -1,39 +1,57 @@
 $dark: #BBB;
-$darker: #555;
+$border-radius: 5px;
+
+@mixin border-dark {
+  border: 2px solid $dark;
+}
 
 body {
   font-family: sans-serif;
-  padding: 30px;
+  padding: 20px;
+  margin: 0px;
 }
 
 h1 {
   font-weight: bold;
   font-size: 25px;
-  background: $dark;
   padding: 5px;
-  padding-left: 15px;
-  margin-bottom: 0;
+  padding-left: 50px;
+  margin: 0;
+  background: url("../images/github.png") no-repeat scroll top 50% left 10px $dark;
+  background-size: 32px;
+  border-radius: $border-radius $border-radius 0px 0px;
 }
 
 #fetch-users, #refresh-users {
+  @include border-dark;
+
   float: left;
   outline: none;
-  border: 2px solid $darker;
-  background-color: $dark;
   font-size: 110%;
   cursor: pointer;
+  padding-right: 40px;
   border-top-width: 0px;
+  background: no-repeat scroll top 50% right 7px transparent;
+  background-size: contain;
+}
+
+#fetch-users {
+  background-image: url("../images/more.png");
+  border-bottom-left-radius: $border-radius;
 }
 
 #refresh-users {
+  background-image: url("../images/refresh.png");
   border-left-width: 0px;
+  border-bottom-right-radius: $border-radius;
 }
 
 #top-users-list {
+  @include border-dark;
+
   margin: 0px;
-  padding: 0px;
-  border: 2px solid $dark;
-  border-bottom-color: $darker;
+  padding: 5px;
+  border-bottom-right-radius: $border-radius;
   border-top-width: 0px;
   list-style: none;
 
