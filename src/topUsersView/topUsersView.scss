@@ -1,0 +1,60 @@
+$dark: #BBB;
+$darker: #555;
+
+body {
+  font-family: sans-serif;
+  padding: 30px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 25px;
+  background: $dark;
+  padding: 5px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+#fetch-users, #refresh-users {
+  float: left;
+  outline: none;
+  border: 2px solid $darker;
+  background-color: $dark;
+  font-size: 110%;
+  cursor: pointer;
+  border-top-width: 0px;
+}
+
+#refresh-users {
+  border-left-width: 0px;
+}
+
+#top-users-list {
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid $dark;
+  border-bottom-color: $darker;
+  border-top-width: 0px;
+  list-style: none;
+
+  .top-user {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      vertical-align: middle;
+    }
+
+    &-login {
+      font-weight: bold;
+    }
+
+    &-followers {
+      color: #1F7901;
+    }
+  }
+}
