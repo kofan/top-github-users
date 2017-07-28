@@ -28,7 +28,7 @@ function getUserDetails(user) {
 }
 
 /**
- * The object responsible for actual fetching of the usrs from the GitHub API
+ * The object responsible for actual fetching of the users from the GitHub API
  */
 export default {
   fetchMoreUsers() {

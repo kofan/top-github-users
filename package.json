@@ -1,7 +1,7 @@
 {
   "name": "top-github-users",
   "version": "1.0.0",
-  "description": "Getting the top GitHub users with the most number of followers using RxJS library",
+  "description": "Getting the TOP GitHub users with the most number of followers using RxJS library",
   "main": "src/main.js",
   "repository": {
     "url": "https://github.com/kofan/top-github-users",

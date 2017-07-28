@@ -36,7 +36,7 @@ export default function topUsersObservableFactory(
     // If no users returned then we want to complete the Observable
     .takeWhile(listOfUsers => listOfUsers.length !== 0)
 
-    // Now we need to concat all array emitted at the previous step
+    // Now we need to concat all arrays emitted at the previous step
     // For example:
     //   --[u1, u2, u3]--[u4, u5]----[null]---[u6, u7, u8, u9]-->
     // will become

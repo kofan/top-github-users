@@ -2,12 +2,12 @@ MAKE_FILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 DIRECTORY_PATH := $(patsubst %/,%,$(dir $(MAKE_FILE_PATH)))
 CD = cd $(DIRECTORY_PATH) &&
 
-.PHONY: all install test build clean serve
+.PHONY: all install test build clean serve dev prod
 
 all: install build clean
 
 install:
-	$(CD) yarn install
+	$(CD) yarn || npm install
 
 test:
 	$(CD) npm test
@@ -21,3 +21,9 @@ clean:
 
 serve:
 	$(CD) npm run serve-prod
+
+dev: install
+	npm run dev
+
+prod: install
+	npm run prod

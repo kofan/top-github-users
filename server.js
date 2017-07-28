@@ -1,8 +1,7 @@
-'use strict';
-
 const PORT = process.env.NODE_PORT || 9000;
 const DIST_DIR = require('path').join(__dirname, 'dist');
 const express = require('express');
+
 const app = express();
 
 app
